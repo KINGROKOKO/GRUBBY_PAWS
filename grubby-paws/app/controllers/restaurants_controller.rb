@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
+  
   def index
-
+    @restaurants = Restaurant.all.order("created_at DESC")
   end
 
   def new
@@ -9,6 +10,12 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+
+    if @restaurant.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   private
