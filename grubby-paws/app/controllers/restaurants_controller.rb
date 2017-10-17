@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  
+
   def index
     @restaurants = Restaurant.all.order("created_at DESC")
   end
@@ -23,5 +23,4 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:name, :description, :location)
   end
-
 end
