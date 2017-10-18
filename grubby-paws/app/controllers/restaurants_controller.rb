@@ -21,6 +21,22 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @restaurant.update(restaurant_params)
+      redirect_to restaurant_path(@restaurant)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to root_path
+  end
+
   private
 
   def restaurant_params

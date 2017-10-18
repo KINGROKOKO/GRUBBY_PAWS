@@ -30,3 +30,33 @@ RSpec.describe 'can add restaurant description and visit single view page' do
     expect(page).to have_content 'Great place to eat!!!'
   end
 end
+
+RSpec.describe 'can delete restaurant' do
+  it 'can delete restaurant and not see it on main page' do
+    visit('restaurants/new')
+    puts page.body
+    fill_in "restaurant_name", with: 'Nigerian', visible: false
+    fill_in "restaurant_description", with: 'Great place to eat!!!'
+    fill_in "restaurant_location", with: 'Home'
+    click_button 'Create Restaurant'
+    click_link 'Nigerian'
+    click_link 'DELETE'
+    expect(page).to_not have_content 'Nigerian'
+  end
+end
+
+RSpec.describe 'can edit restaurant description' do
+  it 'can edit restaurant description and see changes on page' do
+    visit('restaurants/new')
+    fill_in "restaurant_name", with: 'Nigerian', visible: false
+    fill_in "restaurant_description", with: 'Great place to eat!!!'
+    fill_in "restaurant_location", with: 'Home'
+    click_button 'Create Restaurant'
+    click_link 'Nigerian'
+    click_link 'EDIT'
+    fill_in "restaurant_description", with: 'Great place to eat again!!!'
+    click_button 'Update Restaurant'
+    expect(page).to_not have_content 'Great place to eat!!!'
+    expect(page).to have_content 'Great place to eat again!!!'
+  end
+end
