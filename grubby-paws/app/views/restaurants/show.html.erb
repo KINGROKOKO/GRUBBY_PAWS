@@ -3,5 +3,10 @@
 <p><%= @restaurant.description %></p>
 
 <%= link_to "BACK", root_path%>
-<%= link_to "DELETE", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "EDIT", edit_restaurant_path(@restaurant)%>
+
+<% if user_signed_in? %>
+  <% if @restaurant.user_id == current_user.id %>
+    <%= link_to "DELETE", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to "EDIT", edit_restaurant_path(@restaurant)%>
+  <%end%>
+<% end %>

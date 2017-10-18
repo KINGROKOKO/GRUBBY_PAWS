@@ -9,7 +9,8 @@ end
 
 RSpec.describe 'can add restaurant to page' do
   it 'can see restaurant name on page after adding' do
-    visit('restaurants/new')
+    sign_up
+    click_link "ADD RESTAURANT"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great'
     fill_in "restaurant_location", with: 'Home'
@@ -20,7 +21,8 @@ end
 
 RSpec.describe 'can add restaurant description and visit single view page' do
   it 'can see restaurant description on page after adding' do
-    visit('restaurants/new')
+    sign_up
+    click_link "ADD RESTAURANT"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great place to eat!!!'
     fill_in "restaurant_location", with: 'Home'
@@ -33,8 +35,8 @@ end
 
 RSpec.describe 'can delete restaurant' do
   it 'can delete restaurant and not see it on main page' do
-    visit('restaurants/new')
-    puts page.body
+    sign_up
+    click_link "ADD RESTAURANT"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great place to eat!!!'
     fill_in "restaurant_location", with: 'Home'
@@ -47,7 +49,8 @@ end
 
 RSpec.describe 'can edit restaurant description' do
   it 'can edit restaurant description and see changes on page' do
-    visit('restaurants/new')
+    sign_up
+    click_link "ADD RESTAURANT"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great place to eat!!!'
     fill_in "restaurant_location", with: 'Home'
