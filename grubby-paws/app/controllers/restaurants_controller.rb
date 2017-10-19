@@ -1,3 +1,5 @@
+# require 'pry'
+
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
   def index
@@ -9,10 +11,13 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = current_user.restaurants.build
+    @categories = Category.all.map{|c| [c.name, c.id]}
+    # binding.pry
   end
 
   def create
     @restaurant = current_user.restaurants.build(restaurant_params)
+    @restaurant.category_id = params[:category_id]
 
     if @restaurant.save
       redirect_to root_path
@@ -22,9 +27,12 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   def update
+    @restaurant.category_id = params[:category_id]
+
     if @restaurant.update(restaurant_params)
       redirect_to restaurant_path(@restaurant)
     else
@@ -40,7 +48,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description, :location)
+    params.require(:restaurant).permit(:name, :description, :location, :category_id)
   end
 
   def find_restaurant

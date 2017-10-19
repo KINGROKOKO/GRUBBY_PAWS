@@ -11,6 +11,7 @@ RSpec.describe 'can add restaurant to page' do
   it 'can see restaurant name on page after adding' do
     sign_up
     click_link "ADD RESTAURANT"
+    select 'Nigerian', from: "category_id"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great'
     fill_in "restaurant_location", with: 'Home'
@@ -23,6 +24,7 @@ RSpec.describe 'can add restaurant description and visit single view page' do
   it 'can see restaurant description on page after adding' do
     sign_up
     click_link "ADD RESTAURANT"
+    select 'Nigerian', from: "category_id"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great place to eat!!!'
     fill_in "restaurant_location", with: 'Home'
@@ -37,6 +39,7 @@ RSpec.describe 'can delete restaurant' do
   it 'can delete restaurant and not see it on main page' do
     sign_up
     click_link "ADD RESTAURANT"
+    select 'Nigerian', from: "category_id"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great place to eat!!!'
     fill_in "restaurant_location", with: 'Home'
@@ -51,12 +54,14 @@ RSpec.describe 'can edit restaurant description' do
   it 'can edit restaurant description and see changes on page' do
     sign_up
     click_link "ADD RESTAURANT"
+    select 'Nigerian', from: "category_id"
     fill_in "restaurant_name", with: 'Nigerian', visible: false
     fill_in "restaurant_description", with: 'Great place to eat!!!'
     fill_in "restaurant_location", with: 'Home'
     click_button 'Create Restaurant'
     click_link 'Nigerian'
     click_link 'EDIT'
+    select 'Nigerian', from: "category_id"
     fill_in "restaurant_description", with: 'Great place to eat again!!!'
     click_button 'Update Restaurant'
     expect(page).to_not have_content 'Great place to eat!!!'
