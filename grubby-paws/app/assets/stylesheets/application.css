@@ -13,5 +13,10 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
+ /*@import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .restaurant-show {
+   height: 475px;
+   width: 325px;
+ }*/

@@ -3,3 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.restaurant {
+  height: 150px;
+  width: 150px;
+  border-radius: 70px;
+}
+
+.restaurant-show {
+  height: 475px;
+  width: 325px;
+}
+
+.title {
+  // text-align: center;
+  font-family: verdana;
+  font-weight: bold;
+  color: teal;
+}
+
+#main-text {
+  font-family: futura;
+  color: maroon;
+}
+
+#main-text2 {
+  font-family: futura;
+  color: maroon;
+}

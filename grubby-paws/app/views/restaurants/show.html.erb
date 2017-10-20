@@ -1,7 +1,22 @@
-<h2><%= @restaurant.name %></h2>
-<h4><%= @restaurant.category.name %></h4>
-<h3><%= @restaurant.location %></h3>
-<p><%= @restaurant.description %></p>
+<div class = "row">
+  <div class = "col-md-4">
+    <%= image_tag @restaurant.restaurant_img.url(:restaurant_show), class: "restauarnt-show" %>
+
+  </div>
+
+  <div class = "col-md-8">
+    <h2><%= @restaurant.name %></h2>
+    <h4><%= @restaurant.category.name %></h4>
+    <h3><%= @restaurant.location %></h3>
+    <p><%= @restaurant.description %></p>
+  </div>
+</div>
+
+<div class = "row">
+  <div class ="col-md-4">
+
+  </div>
+</div>
 
 <%= link_to "BACK", root_path%>
 
